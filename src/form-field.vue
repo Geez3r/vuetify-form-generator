@@ -35,6 +35,22 @@
 					></v-text-field>
 			</div>
 
+			<div v-else-if="field.type == 'number'">
+				<v-text-field
+					v-model="localValue"
+					type="number"
+					:label="field.label"
+					:required="field.required"
+					:readonly="field.readonly"
+					:disabled="field.disabled"
+					:placeholder="field.placeholder"
+					@blur="onBlur"
+					@change="onChange"
+					@focus="onFocus"
+					@input="onInput"
+				></v-text-field>
+			</div>
+
 			<div v-else-if="field.type == 'select'">
 					<v-select
 						v-model="localValue"

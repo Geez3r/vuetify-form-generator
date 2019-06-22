@@ -52,7 +52,8 @@
 					usePassword: true,
 					showHiddenField: true,
 					skillsRadio: null,
-					switch: false
+					switch: false,
+					age: 30
 				},
 				schema: {
 					fields: [{
@@ -76,8 +77,11 @@
 						placeholder: "Your name",
 						featured: true,
 						required: true
-					},
-					{
+					},{
+						type: "number",
+						label: "Age",
+						model: "age",
+					},{
 						type: "checkbox",
 						label: "Use password?",
 						model: "usePassword"
