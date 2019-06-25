@@ -251,6 +251,22 @@
 				return field.disabled;
 			},
 
+			fieldReadOnly(field) {
+				if (isFunction(field.readonly)) return field.readonly.call(this, this.model, this.field)
+
+				if (isNil(field.readonly)) return false;
+
+				return field.readonly;
+			},
+
+			showLabel(field) {
+				if (isFunction(field.seperateLabel)) return field.seperateLabel.call(this, this.model, this.field)
+
+				if (isNil(field.seperateLabel)) return field.label;
+
+				if (field.seperateLabel) return '';
+			},
+
 			containsFunction(value) {
 				if (typeof value === "string") return value.match(/\(.*\) =>/g) // check for '(model...) =>'
 				return false
