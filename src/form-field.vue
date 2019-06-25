@@ -191,11 +191,14 @@
 		props: {
 			field: Object,
 			value: null,
-			model: Object
+			model: Object,
+			menuDatePicker: false
 		},
 		data(){
 			return {
 				localValue: this.value,
+				localModel: this.model,
+				on: false,
 				validationRules: {
 					email: [
 						(v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || this.validationErrorMessages.emailInvalid
