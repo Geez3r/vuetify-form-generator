@@ -232,6 +232,10 @@
 
 			// Get visible prop of field
 			fieldVisible(field) {
+				if (this.containsFunction(field.visible)) {
+					field.visible = new Function('return ' + field.visible)()
+				}
+
 				if (isFunction(field.visible)) return field.visible.call(this, this.model, this.field)
 
 				if (isNil(field.visible)) return true;
@@ -245,6 +249,11 @@
 				if (isNil(field.disabled)) return false;
 
 				return field.disabled;
+			},
+
+			containsFunction(value) {
+				if (typeof value === "string") return value.match(/\(.*\) =>/g) // check for '(model...) =>'
+				return false
 			}
 		}
 	}
