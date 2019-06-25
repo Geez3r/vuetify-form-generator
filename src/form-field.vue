@@ -147,7 +147,7 @@
 							></v-textarea>
 			</div>
 
-			<div v-else>
+					<div v-else-if="field.type == 'text'">
 				<v-text-field
 						v-model="localValue"
 						:label="field.label"
@@ -162,12 +162,14 @@
 						@focus="onFocus"
 						@input="onInput"			  
 					></v-text-field>
+					</div>
 
-
+					<div v-else>
 					<v-alert v-if="field.type != 'text'" color="error" icon="warning" value="true">
 						<strong>The {{field.type}} type is not yet implemented.</strong> <br>
 						{{field}}
 					</v-alert>
+					</div>
 					
 			</div>
 		</div>
