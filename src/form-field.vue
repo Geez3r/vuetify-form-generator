@@ -7,55 +7,55 @@
 				</v-flex>
 			</div>
 			<v-flex>
-		<div v-if="fieldVisible(field)">
-			<div v-if="field.type == 'email'">
-				<v-text-field
-						v-model="localValue"
-						:label="field.label"
-						:required="field.required"
-						:readonly="field.readonly"
+				<div v-if="fieldVisible(field)">
+					<div v-if="field.type == 'email'">
+						<v-text-field
+								v-model="localValue"
+								:label="field.label"
+								:required="field.required"
+								:readonly="field.readonly"
 								:disabled="fieldDisabled(field)"
-						:placeholder="field.placeholder"
-						:rules="validationRules.email"
-						@blur="onBlur"
-						@change="onChange"
-						@focus="onFocus"
-						@input="onInput"
-					></v-text-field>
-			</div>
+								:placeholder="field.placeholder"
+								:rules="validationRules.email"
+								@blur="onBlur"
+								@change="onChange"
+								@focus="onFocus"
+								@input="onInput"
+							></v-text-field>
+					</div>
 
-			<div v-else-if="field.type == 'password'">
-				<v-text-field
-						v-model="localValue"
-						:label="field.label"
-						:required="field.required"
-						:readonly="field.readonly"
-						:disabled="field.disabled"
-						:placeholder="field.placeholder"
-						:append-icon="field.passwordVisible ? 'visibility_off' : 'visibility'"
+					<div v-else-if="field.type == 'password'">
+						<v-text-field
+								v-model="localValue"
+								:label="field.label"
+								:required="field.required"
+								:readonly="field.readonly"
+								:disabled="field.disabled"
+								:placeholder="field.placeholder"
+								:append-icon="field.passwordVisible ? 'visibility_off' : 'visibility'"
 								:type="field.passwordVisible ? 'text' : 'password'"
-						@blur="onBlur"
-						@change="onChange"
-						@focus="onFocus"
-						@input="onInput"              
-					></v-text-field>
-			</div>
+								@blur="onBlur"
+								@change="onChange"
+								@focus="onFocus"
+								@input="onInput"              
+							></v-text-field>
+					</div>
 
-			<div v-else-if="field.type == 'number'">
-				<v-text-field
-					v-model="localValue"
-					type="number"
-					:label="field.label"
-					:required="field.required"
-					:readonly="field.readonly"
-					:disabled="field.disabled"
-					:placeholder="field.placeholder"
-					@blur="onBlur"
-					@change="onChange"
-					@focus="onFocus"
-					@input="onInput"
-				></v-text-field>
-			</div>
+					<div v-else-if="field.type == 'number'">
+						<v-text-field
+							v-model="localValue"
+							type="number"
+							:label="field.label"
+							:required="field.required"
+							:readonly="field.readonly"
+							:disabled="field.disabled"
+							:placeholder="field.placeholder"
+							@blur="onBlur"
+							@change="onChange"
+							@focus="onFocus"
+							@input="onInput"
+						></v-text-field>
+					</div>
 
 					<div v-else-if="field.type == 'datepicker'">
 						<v-menu
@@ -81,107 +81,107 @@
 						</v-menu>
 					</div>
 
-			<div v-else-if="field.type == 'select'">
-					<v-select
-						v-model="localValue"
-						:items="field.values"
-						:label="field.label"
-						:required="field.required"
-						:readonly="field.readonly"
-						:disabled="field.disabled"
-						:placeholder="field.placeholder"
-						:clearable="field.clearable"
-						:multiple="field.multiple"
+					<div v-else-if="field.type == 'select'">
+						<v-select
+							v-model="localValue"
+							:items="field.values"
+							:label="field.label"
+							:required="field.required"
+							:readonly="field.readonly"
+							:disabled="field.disabled"
+							:placeholder="field.placeholder"
+							:clearable="field.clearable"
+							:multiple="field.multiple"
 							:hint="field.hint"
 							:persistent-hint="field.persistentHint"
 							:single-line="field.singleLine ? true : false"
 							menu-props="bottom"
-						@change="onChange"
-					></v-select>
-			</div>
+							@change="onChange"
+						></v-select>
+					</div>
 
-			<div v-else-if="field.type == 'radio'">
-				<v-container fluid>
-					<p>{{ field.label }}</p>
-					<v-radio-group v-model="localValue">
-						<v-radio
-							v-for="n in field.values"
-							:key="n.value"
-							:label="n.label"
-							:value="n.value"
+					<div v-else-if="field.type == 'radio'">
+						<v-container fluid>
+							<p>{{ field.label }}</p>
+							<v-radio-group v-model="localValue">
+								<v-radio
+									v-for="n in field.values"
+									:key="n.value"
+									:label="n.label"
+									:value="n.value"
+									:disabled="field.disabled"
+									:readonly="field.readonly"
+									@change="onChange"
+								></v-radio>
+							</v-radio-group>
+						</v-container>
+					</div>
+
+					<div v-else-if="field.type == 'switch'">
+						<v-switch v-model="localValue"
+							:label="field.label"
+							:value="field.value"
 							:disabled="field.disabled"
 							:readonly="field.readonly"
 							@change="onChange"
-						></v-radio>
-					</v-radio-group>
-				</v-container>
-			</div>
-
-			<div v-else-if="field.type == 'switch'">
-				<v-switch v-model="localValue"
-					:label="field.label"
-					:value="field.value"
-					:disabled="field.disabled"
-					:readonly="field.readonly"
-					@change="onChange"
-				></v-switch>
-			</div>
+						></v-switch>
+					</div>
 
 
-			<div v-else-if="field.type == 'checkbox'">
-					<v-checkbox
-						v-model="localValue"
-						:label="field.label"
-						:required="field.required"
-						:disabled="field.disabled"
-						@change="onChange"
-					></v-checkbox>
-			</div>
+					<div v-else-if="field.type == 'checkbox'">
+							<v-checkbox
+								v-model="localValue"
+								:label="field.label"
+								:required="field.required"
+								:disabled="field.disabled"
+								@change="onChange"
+							></v-checkbox>
+					</div>
 
-			<div v-else-if="field.type == 'textarea'">
+					<div v-else-if="field.type == 'textarea'">
 						<v-textarea
-						v-model="localValue"
-						:label="field.label"
-						:required="field.required"
-						:readonly="field.readonly"
-						:disabled="field.disabled"
-						:placeholder="field.placeholder"
-						v-bind:textarea="field.featured"
-						@blur="onBlur"
-						@change="onChange"
-						@focus="onFocus"
-						@input="onInput"		      
+								v-model="localValue"
+								:label="field.label"
+								:required="field.required"
+								:readonly="field.readonly"
+								:disabled="field.disabled"
+								:placeholder="field.placeholder"
+								v-bind:textarea="field.featured"
+								@blur="onBlur"
+								@change="onChange"
+								@focus="onFocus"
+								@input="onInput"		      
 							></v-textarea>
-			</div>
+					</div>
 
 					<div v-else-if="field.type == 'text'">
-				<v-text-field
-						v-model="localValue"
-						:label="field.label"
-						:required="field.required"
-						:readonly="field.readonly"
-						:disabled="field.disabled"
-						:placeholder="field.placeholder"
-					:counter="field.counter"
-					:hint="field.hint"
-						@blur="onBlur"
-						@change="onChange"
-						@focus="onFocus"
-						@input="onInput"			  
-					></v-text-field>
+						<v-text-field
+							v-model="localValue"
+							:label="field.label"
+							:required="field.required"
+							:readonly="field.readonly"
+							:disabled="field.disabled"
+							:placeholder="field.placeholder"
+							:counter="field.counter"
+							:hint="field.hint"
+							@blur="onBlur"
+							@change="onChange"
+							@focus="onFocus"
+							@input="onInput"			  
+						></v-text-field>
 					</div>
 
 					<div v-else>
-					<v-alert v-if="field.type != 'text'" color="error" icon="warning" value="true">
-						<strong>The {{field.type}} type is not yet implemented.</strong> <br>
-						{{field}}
-					</v-alert>
+						<v-alert v-if="field.type != 'text'" color="error" icon="warning" value="true">
+							<strong>The {{field.type}} type is not yet implemented.</strong> <br>
+							{{field}}
+						</v-alert>
 					</div>
-					
-			</div>
+
+				</div>
 			</v-flex>
 		</v-layout>
-		</div>
+	</div>
 </template>
 
 <script>
