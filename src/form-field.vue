@@ -50,6 +50,30 @@
 				></v-text-field>
 			</div>
 
+					<div v-else-if="field.type == 'datepicker'">
+						<v-menu
+							v-model="menuDatePicker"
+							:close-on-content-click="false"
+							:nudge-right="40"
+							lazy
+							transition="scale-transition"
+							offset-y
+							full-width
+							min-width="290px"
+						>
+							<template v-slot:activator="{ on }">
+								<v-text-field
+									v-model="localValue"
+									:label="showLabel(field)"
+									prepend-icon="event"
+									readonly
+									v-on="on"
+								></v-text-field>
+							</template>
+							<v-date-picker v-model="localValue" @input="menuDatePicker = false"></v-date-picker>
+						</v-menu>
+					</div>
+
 			<div v-else-if="field.type == 'select'">
 					<v-select
 						v-model="localValue"
