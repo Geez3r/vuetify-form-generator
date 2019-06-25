@@ -85,8 +85,10 @@
 						:placeholder="field.placeholder"
 						:clearable="field.clearable"
 						:multiple="field.multiple"
-						single-line
-						bottom
+							:hint="field.hint"
+							:persistent-hint="field.persistentHint"
+							:single-line="field.singleLine ? true : false"
+							menu-props="bottom"
 						@change="onChange"
 					></v-select>
 			</div>
