@@ -26,7 +26,6 @@
 						:disabled="field.disabled"
 						:placeholder="field.placeholder"
 						:append-icon="field.passwordVisible ? 'visibility_off' : 'visibility'"
-								:append-icon-cb="appendPasswordIconCheckbox()"
 								:type="field.passwordVisible ? 'text' : 'password'"
 						@blur="onBlur"
 						@change="onChange"
