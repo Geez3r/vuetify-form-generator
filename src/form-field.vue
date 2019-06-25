@@ -1,5 +1,12 @@
 <template>
 	<div>
+		<v-layout row wrap align-center>
+			<div v-if="field.seperateLabel == true && fieldVisible(field)">
+				<v-flex xs12 sm12>
+					<v-subheader v-text="field.label"></v-subheader>
+				</v-flex>
+			</div>
+			<v-flex>
 		<div v-if="fieldVisible(field)">
 			<div v-if="field.type == 'email'">
 				<v-text-field
@@ -172,8 +179,9 @@
 					</div>
 					
 			</div>
+			</v-flex>
+		</v-layout>
 		</div>
-	</div>
 </template>
 
 <script>
