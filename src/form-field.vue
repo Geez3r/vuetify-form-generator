@@ -14,7 +14,7 @@
 						:label="field.label"
 						:required="field.required"
 						:readonly="field.readonly"
-						:disabled="field.disabled"
+								:disabled="fieldDisabled(field)"
 						:placeholder="field.placeholder"
 						:rules="validationRules.email"
 						@blur="onBlur"
@@ -234,6 +234,14 @@
 				if (isNil(field.visible)) return true;
 
 				return field.visible;
+			},
+
+			fieldDisabled(field) {
+				if (isFunction(field.disabled)) return field.disabled.call(this, this.model, this.field)
+
+				if (isNil(field.disabled)) return false;
+
+				return field.disabled;
 			}
 		}
 	}
