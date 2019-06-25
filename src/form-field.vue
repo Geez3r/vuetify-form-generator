@@ -132,20 +132,19 @@
 			</div>
 
 			<div v-else-if="field.type == 'textarea'">
-				<v-text-field
+						<v-textarea
 						v-model="localValue"
 						:label="field.label"
 						:required="field.required"
 						:readonly="field.readonly"
 						:disabled="field.disabled"
 						:placeholder="field.placeholder"
-						multi-line
 						v-bind:textarea="field.featured"
 						@blur="onBlur"
 						@change="onChange"
 						@focus="onFocus"
 						@input="onInput"		      
-					></v-text-field>
+							></v-textarea>
 			</div>
 
 			<div v-else>
